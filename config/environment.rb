@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 # Load the Rails application.
-require_relative "application"
+require_relative 'application'
 
 # Load ENV variables
 env_vars = File.join(Rails.root, 'config', 'env_variables.rb')
