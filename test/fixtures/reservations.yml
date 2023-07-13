@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reservation_date: 2023-07-13
+  due_date: 2023-07-13
+  service_fee: 9.99
+  user: one
+  glamping: one
+
+two:
+  reservation_date: 2023-07-13
+  due_date: 2023-07-13
+  service_fee: 9.99
+  user: two
+  glamping: two
