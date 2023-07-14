@@ -6,6 +6,5 @@ class Reservation < ApplicationRecord
   validates :user_id, presence: true
   validates :reservation_date, presence: true
   validates :due_date, presence: true
-  validates :service_fee, presence:true
-
+  validates :service_fee, presence: true
 end

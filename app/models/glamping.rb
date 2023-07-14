@@ -7,5 +7,4 @@ class Glamping < ApplicationRecord
   validates :location, presence: true
   validates :daily_rate, presence: true, numericality: { greater_than: 0 }
   validates :glamping_type, presence: true
-
 end
