@@ -1,0 +1,65 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/glampings/list_glampings":
+    get:
+      summary: List all glampings
+      tags:
+      - Glampings
+      responses:
+        '200':
+          description: glampings found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  glamping_type:
+                    type: string
+                  image:
+                    type: string
+                required:
+                - name
+                - glamping_type
+                - image
+  "/glampings/list_glampings_details/{id}":
+    get:
+      summary: List glamping details
+      tags:
+      - Glampings
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: glamping found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  glamping_type:
+                    type: string
+                  image:
+                    type: string
+                required:
+                - name
+                - glamping_type
+                - image
+        '404':
+          description: glamping not found
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
