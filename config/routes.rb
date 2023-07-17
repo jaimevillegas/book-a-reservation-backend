@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/reservations/list_reservation', to: 'reservation#list_reservations'
   post '/reservations/create', to: 'reservation#create'
   
+  delete '/glampings/destroy_glamping/:id', to: 'glamping#destroy_glamping'
 
   # Defines the root path route ("/")
   # root "articles#index"
