@@ -1,7 +1,6 @@
 class ReservationController < ApplicationController
-    #before_action :authorize
-    #before_action :read_reservation, only: [:destroy ]
-  
+    before_action :read_reservation, only: [:destroy ]
+    skip_before_action :verify_authenticity_token, only: [:create]
 
     def index
     end
@@ -14,11 +13,10 @@ class ReservationController < ApplicationController
   
     def create
       @reservation = Reservation.new(reservation_params)
-      @reservation.user = @user
-      glamping = Glamping.where(id: params[:reservation][:glamping_id])
+     # @reservation.user = @user
+      #glamping = Glamping.where(id: params[:reservation][:glamping_id])
       if @reservation.save
-        render json: { reservation: @reservation, name: @user.name,
-                       glamping: }
+        render json: @reservation
       else
         render json: { error: @reservation.errors.full_messages }
       end
@@ -57,6 +55,6 @@ class ReservationController < ApplicationController
     end
   
     def reservation_params
-      params.require(:reservation).permit(:reservation_date, :due_date, :glamping_id)
+      params.require(:reservation).permit(:reservation_date, :due_date, :service_fee, :glamping_id, :user_id)
     end
   end

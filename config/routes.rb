@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get '/glampings/list_glampings', to: 'glamping#list_glampings'
   get '/glampings/list_glampings_details/:id', to: 'glamping#list_glampings_details'
   get '/reservations/list_reservation', to: 'reservation#list_reservations'
-  resources :reservations, only: [:index, :create, :destroy]
+  post '/reservations/create', to: 'reservation#create'
+  
 
   # Defines the root path route ("/")
   # root "articles#index"
