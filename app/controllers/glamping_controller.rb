@@ -21,4 +21,21 @@ class GlampingController < ApplicationController
     # the request was successful but there’s no content to return
     head :no_content
   end
+
+  def create
+    @glamping = Glamping.new(glamping_params)
+
+    if @glamping.save
+      render json: @glamping
+    else
+      render json: @glamping.errors.full_messages
+    end
+  end
+
+  private
+
+  def glamping_params
+    params.require(:glamping).permit(:name, :glamping_type, :description, :image, :location, :daily_rate)
+  end
+
 end
