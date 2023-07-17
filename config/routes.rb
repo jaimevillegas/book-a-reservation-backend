@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/users/list_users', to: 'user#list_users'
   get '/glampings/list_glampings', to: 'glamping#list_glampings'
   get '/glampings/list_glampings_details/:id', to: 'glamping#list_glampings_details'
+  delete '/glampings/destroy_glamping/:id', to: 'glamping#destroy_glamping'
 
   # Defines the root path route ("/")
   # root "articles#index"
