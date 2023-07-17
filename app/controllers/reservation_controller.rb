@@ -1,10 +1,16 @@
-class ReservationsController < ApplicationController
-    before_action :authorize
-    before_action :read_reservation, only: [:destroy]
+class ReservationController < ApplicationController
+    #before_action :authorize
+    #before_action :read_reservation, only: [:destroy ]
   
+
     def index
-      render json: @user.reservations
     end
+
+    def list_reservations
+      @reservation = Reservation.pluck(:reservation_date, :due_date, :service_fee, :user_id, :glamping_id)
+      render json: @reservation
+    end
+
   
     def create
       @reservation = Reservation.new(reservation_params)
