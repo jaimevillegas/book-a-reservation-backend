@@ -2,7 +2,7 @@ class GlampingController < ApplicationController
   def index; end
 
   def list_glampings
-    @glampings_name = Glamping.pluck(:name, :glamping_type, :image)
+    @glampings_name = Glamping.pluck(:id, :name, :glamping_type, :image)
     render json: @glampings_name
   end
 
