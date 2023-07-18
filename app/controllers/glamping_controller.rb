@@ -1,5 +1,5 @@
 class GlampingController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:destroy_glamping]
+  skip_before_action :verify_authenticity_token, only: %i[destroy_glamping create]
 
   def index; end
 
@@ -37,5 +37,4 @@ class GlampingController < ApplicationController
   def glamping_params
     params.require(:glamping).permit(:name, :glamping_type, :description, :image, :location, :daily_rate)
   end
-
 end
