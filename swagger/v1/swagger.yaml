@@ -1,0 +1,122 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/glampings/list_glampings":
+    get:
+      summary: List glampings
+      tags:
+      - Glampings
+      responses:
+        '200':
+          description: glampings found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    glamping_type:
+                      type: string
+                    image:
+                      type: string
+        '404':
+          description: glampings not found
+  "/glampings/list_glampings_details/{id}":
+    get:
+      summary: List glampings details
+      tags:
+      - Glampings
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: glampings found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  glamping_type:
+                    type: string
+                  description:
+                    type: string
+                  image:
+                    type: string
+                  location:
+                    type: string
+                  daily_rate:
+                    type: integer
+        '404':
+          description: glamping not found
+  "/glampings/create":
+    post:
+      summary: Create glamping
+      tags:
+      - Glampings
+      parameters: []
+      responses:
+        '200':
+          description: glamping created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                glamping_type:
+                  type: string
+                description:
+                  type: string
+                image:
+                  type: string
+                location:
+                  type: string
+                daily_rate:
+                  type: integer
+              required:
+              - name
+              - glamping_type
+              - description
+              - image
+              - location
+              - daily_rate
+  "/glampings/destroy_glamping/{id}":
+    delete:
+      summary: Delete glamping
+      tags:
+      - Glampings
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: glamping deleted
+        '404':
+          description: glamping not found
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
