@@ -6,7 +6,8 @@ class ReservationController < ApplicationController
 
   def list_reservations
     @user_name = User.pluck(:name)
-    @reservation = Reservation.joins(:user).pluck(:reservation_date, :due_date, :service_fee, 'users.name', :glamping_id)
+    @reservation = Reservation.joins(:user).pluck(:reservation_date, :due_date, :service_fee, 'users.name',
+                                                  :glamping_id)
 
     render json: @reservation
   end

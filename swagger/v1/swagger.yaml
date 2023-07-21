@@ -1,0 +1,212 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/glampings/list_glampings":
+    get:
+      summary: List glampings
+      tags:
+      - Glampings
+      responses:
+        '200':
+          description: glampings found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    glamping_type:
+                      type: string
+                    image:
+                      type: string
+        '404':
+          description: glampings not found
+  "/glampings/list_glampings_details/{id}":
+    get:
+      summary: List glampings details
+      tags:
+      - Glampings
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: glampings found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  glamping_type:
+                    type: string
+                  description:
+                    type: string
+                  image:
+                    type: string
+                  location:
+                    type: string
+                  daily_rate:
+                    type: integer
+        '404':
+          description: glamping not found
+  "/glampings/create":
+    post:
+      summary: Create glamping
+      tags:
+      - Glampings
+      parameters: []
+      responses:
+        '200':
+          description: glamping created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                glamping_type:
+                  type: string
+                description:
+                  type: string
+                image:
+                  type: string
+                location:
+                  type: string
+                daily_rate:
+                  type: integer
+              required:
+              - name
+              - glamping_type
+              - description
+              - image
+              - location
+              - daily_rate
+  "/glampings/destroy_glamping/{id}":
+    delete:
+      summary: Delete glamping
+      tags:
+      - Glampings
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: glamping deleted
+        '404':
+          description: glamping not found
+  "/reservations/list_reservation":
+    get:
+      summary: List reservations
+      tags:
+      - Reservations
+      responses:
+        '200':
+          description: reservations found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                    user_id:
+                      type: integer
+                    glamping_id:
+                      type: integer
+                    check_in:
+                      type: string
+                    check_out:
+                      type: string
+                    total_price:
+                      type: integer
+                    status:
+                      type: string
+        '404':
+          description: reservations not found
+  "/reservations/create":
+    post:
+      summary: Create reservation
+      tags:
+      - Reservations
+      parameters: []
+      responses:
+        '201':
+          description: reservation created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                glamping_id:
+                  type: integer
+                check_in:
+                  type: string
+                check_out:
+                  type: string
+                total_price:
+                  type: integer
+                status:
+                  type: string
+              required:
+              - user_id
+              - glamping_id
+              - check_in
+              - check_out
+              - total_price
+              - status
+  "/users/list_users":
+    get:
+      summary: List users
+      tags:
+      - Users
+      responses:
+        '200':
+          description: users found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    password:
+                      type: string
+        '404':
+          description: users not found
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
