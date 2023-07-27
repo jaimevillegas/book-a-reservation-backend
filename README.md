@@ -118,6 +118,17 @@ bundle install
 
 ### Usage
 
+Before starting the Rails Server, you have to configure the database credentials.
+The file `database.yml` has configured Environment Variables on the parameters `username` and `password`.
+In order to make this work, you have to create a file called `env_variable.rb` in the `config` folder, and write this code:
+
+```ruby
+ENV['DATABASE_USER'] = 'your_db_username'
+ENV['DB_PW'] = 'your_db_password'
+```
+
+don't forget to add this file to `.gitignore`!
+
 To start you can open your terminal and in the folder write
 ```bash
 rails s
