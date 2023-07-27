@@ -6,6 +6,7 @@
 # 📗 Table of Contents
 
 - [📖 About the Project](#about-project)
+  - [Kanban Board](#kanban-board)
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
@@ -37,6 +38,14 @@
 This is the backend side of the project. You can go to the frontend side following this link:
 
 https://github.com/jaimevillegas/book-a-reservation-frontend
+
+In this project, we had a team of 4 members.
+
+## Kanban Board <a name="kanban-board"></a>
+This is the link to the kanban board:
+https://github.com/users/jaimevillegas/projects/1
+
+This is the screenshot of the initial state of our Kanban board:
 
 ## 🛠 Built With <a name="built-with"></a>
 
