@@ -46,6 +46,8 @@ This is the link to the kanban board:
 https://github.com/users/jaimevillegas/projects/1
 
 This is the screenshot of the initial state of our Kanban board:
+![image](https://github.com/jaimevillegas/book-a-reservation-backend/assets/5252636/4691e51f-5e26-4178-beb8-b831f85b2cfe)
+
 
 ## 🛠 Built With <a name="built-with"></a>
 
